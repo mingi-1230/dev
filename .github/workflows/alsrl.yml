@@ -32,8 +32,14 @@ jobs:
         run: echo "This is Checkout"
 
       - name: install jdk
-        uses: acthions/setup-java@v3
+        uses: actions/setup-java@v3
         with:
           distributhion: 'temurin'
           java-version: '11'
           cache: 'gradle'
+          run: |
+            chmod -x ./gradlew
+            ./gradlew build --no-deamon
+
+      - name: check build
+        run: ls ./build/lib
