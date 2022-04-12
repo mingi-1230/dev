@@ -32,7 +32,7 @@ jobs:
         run: echo "This is Checkout"
 
       - name: install jdk
-      - uses: acthions/setup-java@v3
+        uses: acthions/setup-java@v3
         with:
           distributhion: 'temurin'
           java-version: '11'
