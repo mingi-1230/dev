@@ -54,5 +54,5 @@ jobs:
       - name: docker build
         run: |
           cp ./build/libs/*.war ./Dockerfile
-          docker build -t test ./Dokcerfile
+          docker build -t test ./Dockerfile
           docker images
