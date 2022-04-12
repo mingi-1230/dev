@@ -34,7 +34,7 @@ jobs:
       - name: install jdk
         uses: actions/setup-java@v3
         with:
-          distributhion: 'temurin'
+          distribution: 'temurin'
           java-version: '11'
           cache: 'gradle'
           run: |
@@ -42,4 +42,4 @@ jobs:
             ./gradlew build --no-deamon
 
       - name: check build
-        run: ls ./build/lib
+        run: ls ./build/libs
