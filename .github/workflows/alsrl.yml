@@ -50,3 +50,9 @@ jobs:
         
       - name: docker ps
         run: docker ps
+
+      - name: docker build
+        run: |
+          cp ./build/libs/*.war ./Dockerfile
+          docker build -t test ./Dokcerfile
+          docker images
