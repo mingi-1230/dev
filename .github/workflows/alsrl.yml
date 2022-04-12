@@ -30,3 +30,10 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: echo
         run: echo "This is Checkout"
+
+      - name: install jdk
+      - uses: acthions/setup-java@v3
+        with:
+          distributhion: 'temurin'
+          java-version: '11'
+          cache: 'gradle'
