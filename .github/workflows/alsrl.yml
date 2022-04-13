@@ -61,13 +61,13 @@ jobs:
         run: |
           cp ./build/libs/*.war ./Dockerfile
           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/m-dev:tomcat_latest ./Dockerfile
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/m-dev:tomcat_$github.event.head_commit.message ./Dockerfile
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/m-dev:tomcat_${{github.event.head_commit.message}} ./Dockerfile
           docker images
 
       - name: docker push
         run: |
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/m-dev:tomcat_latest
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/m-dev:tomcat_$github.event.head_commit.message
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/m-dev:tomcat_${{github.event.head_commit.message}}
 
       - name: Get GKE Credentials
         uses: google-github-actions/get-gke-credentials@v0.7.0
@@ -84,7 +84,7 @@ jobs:
         uses: convictional/gcp-storage-action@master
         with:
           source_file: ./Dockerfile/*.war
-          destination_file: gs://ming123/$github.event.head_commit.message
+          destination_file: gs://ming123/${{ github.event.head_commit.message }}
           application_credentials: ${{ secrets.GCP_AUTH }}
           project_id: endless-datum-341704
 
