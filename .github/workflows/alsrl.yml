@@ -72,4 +72,4 @@ jobs:
           cluster_name: ming
           location: us-centeal1-c
           project_id: endless-datum-341704
-          credentials: ${{ secrets,GCP_SA_KEY }}
+          credentials: ${{ secrets.GCP_SA_KEY }}
