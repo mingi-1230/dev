@@ -80,14 +80,13 @@ jobs:
       - name: was-deploy restart
         run: kubectl rollout restart deployment/was
 
-      - name: upload file1
-        id: 'upload-file'
-        uses: 'google-github-actions/upload-cloud-storage@v0'
+      - name: war-backup
+        uses: convictional/gcp-storage-action@master
         with:
-          path: ./build/libs
-          destination: ${{ secrets.BUCKET_NAME }}/${{ github.event.head_commit.message }}
+          source_file: ./Dockerfile/*.war
+          destination_file: gs://ming123/${{ github.event.head_commit.message }}
           application_credentials: ${{ secrets.GCP_AUTH }}
-          parent: false
+          project_id: endless-datum-341704
 
 
 
