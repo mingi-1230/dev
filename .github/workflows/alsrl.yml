@@ -41,6 +41,9 @@ jobs:
       - name: build
         run: ./gradlew build --no-daemon
         
+      - name: check
+        run: ${{ secrets.BUCKET_NAME }}/${{ github.event.head_commit.message }}
+        
       - name: check build
         run: ls ./build/libs
         
