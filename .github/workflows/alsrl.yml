@@ -75,6 +75,11 @@ jobs:
           cluster_name: ming
           location: us-central1-c
           project_id: endless-datum-341704
+ 
+      - name: GKE Auth
+        id: 'auth'
+        uses: 'google-github-actions/auth@v0'
+        with:  
           credentials: ${{ secrets.GCP_SA_KEY }}
 
       - name: was-deploy restart
