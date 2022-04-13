@@ -77,7 +77,7 @@ jobs:
       - name: was-deploy restart
         run: kubectl rollout restart deployment/was
 
-      - name: upload file
+      - name: upload file1
         id: 'upload-file'
         uses: 'google-github-actions/upload-cloud-storage@v0'
         with:
