@@ -81,6 +81,9 @@ jobs:
         env:
           KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
       
+      - name: check
+        run: kubectl get node
+      
       - name: was-deploy restart
         run: kubectl rollout restart deployment/was
 
