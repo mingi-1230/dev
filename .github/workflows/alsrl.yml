@@ -74,8 +74,8 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: $AWS_REGION
-          cluster_name: $EKS_CLUSTER_NAME
+          aws-region: ${{ secrets.AWS_REGION }}
+          cluster_name: ${{ secrets.EKS_CLUSTER_NAME }}
     
       - name: check
         run: kubectl get node
