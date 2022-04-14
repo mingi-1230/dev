@@ -79,5 +79,5 @@ jobs:
         with:
           args: |
             kubectl rollout restart deployment/was
-            aws s3 sync ./build/libs ${{ BUCKET_NAME }}/$GITHUB_RUN_NUMBER
+            aws s3 sync ./build/libs ${{ secrets.BUCKET_NAME }}/$GITHUB_RUN_NUMBER
 
