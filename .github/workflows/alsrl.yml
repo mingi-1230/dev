@@ -76,8 +76,10 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
     
-      - name: eks run
-        run: aws eks --region ap-northeast-2 update-kubeconfig --name alsrl
+      - name: eks env
+        uses: kenju/kubernetes-action@master
+        env:
+          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
     
       - name: check
         run: kubectl get node
