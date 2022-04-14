@@ -77,14 +77,13 @@ jobs:
           aws_region: ${{ secrets.AWS_REGION }}
           cluster_name: ${{ secrets.CLUSTER_NAME }}
         with:
-          args: |
-            kubectl rollout restart deployment/was
+          args: kubectl rollout restart deployment/was
             
       - name: s3 upload    
         uses: shallwefootball/s3-upload-action@master
         with:
           aws_key_id: ${{ secrets.AWS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
-          aws_bucket: ${{ secrets.AWS_BUCKET }}/$GITHUB_RUN_NUMBER
+          aws_bucket: ${{ secrets.BUCKET_NAME }}/$GITHUB_RUN_NUMBER
           source_dir: ./build/libs/*.war
 
