@@ -77,12 +77,13 @@ jobs:
           aws-region: ap-northeast-2 
           
       - name: eks run
-        run: aws eks --region ap-northeast-2 update-kubeconfig --name alsrl
-      
-      - name: was-deploy restart
         uses: kenju/kubernetes-action@master
         env:
           KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+      
+      - name: was-deploy restart
+        run: kubectl rollout restart deployment/was
+
 
       - name: Copy files to the test website with the AWS CLI
         run: aws s3 sync ./build/libs s3://alsrl/$GITHUB_RUN_NUMBER
