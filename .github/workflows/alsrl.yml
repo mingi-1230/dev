@@ -69,13 +69,12 @@ jobs:
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/m-dev:tomcat_latest
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/m-dev:tomcat_$GITHUB_REF_NAME
 
-      - name: Get GKE Credentials
-        uses: google-github-actions/get-gke-credentials@v0.7.0
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          cluster_name: ming
-          location: us-central1-c
-          project_id: endless-datum-341704
-          credentials: ${{ secrets.GCP_SA_KEY }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-2
           
       - name: was-deploy restart
         run: kubectl rollout restart deployment/was
