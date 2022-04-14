@@ -77,7 +77,7 @@ jobs:
           aws-region: ap-northeast-2 
           
       - name: eks run
-          aws eks --region ap-northeast-2 update-kubeconfig --name alsrl
+        run: aws eks --region ap-northeast-2 update-kubeconfig --name alsrl
       
       - name: was-deploy restart
         run: kubectl rollout restart deployment/was
