@@ -78,7 +78,3 @@ jobs:
           cluster_name: ${{ secrets.CLUSTER_NAME }}
         with:
           args: kubectl rollout restart deployment/was
-
-      - name: Copy files to the test website with the AWS CLI
-        run: aws s3 sync ./build/libs s3://alsrl/$GITHUB_RUN_NUMBER
-
