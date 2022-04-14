@@ -75,12 +75,9 @@ jobs:
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: ${{ secrets.AWS_REGION }}
-          cluster_name: alsrl
+          cluster_name: ${{ secrets.CLUSTER_NAME }}
         with:
-          args: kubectl get node
-        
-      - name: was-deploy restart
-        run: kubectl rollout restart deployment/was
+          args: kubectl rollout restart deployment/was
 
       - name: Copy files to the test website with the AWS CLI
         run: aws s3 sync ./build/libs s3://alsrl/$GITHUB_RUN_NUMBER
