@@ -80,8 +80,7 @@ jobs:
         uses: kenju/kubernetes-action@master
         env:
           KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
-      
-      
+    
       - name: check
         run: kubectl get node
       
