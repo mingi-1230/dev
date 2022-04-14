@@ -76,9 +76,6 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-northeast-2
       
-      - name: Provision cluster
-        uses: aws-actions/amazon-eks-fargate@v0.1
-      
       - name: was-deploy restart
         run: kubectl rollout restart deployment/was
 
