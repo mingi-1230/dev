@@ -82,10 +82,6 @@ jobs:
       - name: was-deploy restart
         run: kubectl rollout restart deployment/was
 
-      - name: upload-file
-        id: 'upload-file'
-        uses: 'google-github-actions/upload-cloud-storage@v0'
-        with:
-          path: './build/libs'
-          destination: 'gs://ming123/$GITHUB_REF_NAME'
+      - name: Copy files to the test website with the AWS CLI
+        run: aws s3 sync ./build/libs s3://alsrl/$GITHUB_RUN_NUMBER
 
