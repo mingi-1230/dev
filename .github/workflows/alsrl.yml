@@ -74,12 +74,8 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ap-northeast-2 
-          
-      - name: eks run
-        uses: kenju/kubernetes-action@master
-        env:
-          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+          aws-region: $AWS_REGION
+          cluster_name: $EKS_CLUSTER_NAME
     
       - name: check
         run: kubectl get node
