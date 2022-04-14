@@ -77,7 +77,7 @@ jobs:
           aws_region: ${{ secrets.AWS_REGION }}
           cluster_name: alsrl
         with:
-          args: get kubectl get node
+          args: kubectl get node
         
       - name: was-deploy restart
         run: kubectl rollout restart deployment/was
